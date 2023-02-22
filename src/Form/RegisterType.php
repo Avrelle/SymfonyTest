@@ -3,10 +3,10 @@
 namespace App\Form;
 
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
 use App\Entity\JokeUser;
-use Symfony\Bridge\Doctrine\ManagerRegistry;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -16,7 +16,8 @@ class RegisterType extends AbstractType
     {
 
         $builder
-            ->add('name', TextType::class)
+            ->add('name', EmailType::class)
+            ->add('password', PasswordType::class)
             ->add('save', SubmitType::class)
             ->setMethod('POST')
             ->getForm();

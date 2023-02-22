@@ -20,6 +20,9 @@ class JokeUser implements UserInterface
     #[ORM\Column]
     private array $roles = [];
 
+    #[ORM\Column(length: 255)]
+    private ?string $password = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -81,7 +84,7 @@ class JokeUser implements UserInterface
      */
     public function getPassword(): ?string
     {
-        return null;
+        return $this->password;
     }
 
     /**
@@ -101,5 +104,12 @@ class JokeUser implements UserInterface
     {
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
+    }
+
+    public function setPassword(string $password): self
+    {
+        $this->password = $password;
+
+        return $this;
     }
 }
